@@ -5,6 +5,7 @@
  * @author Divesh Agarwal
  */
 
+const { createUser } = require("../repositories/userRepo");
 class AuthController {
   async login(req, res, next) {
     try {
@@ -18,8 +19,7 @@ class AuthController {
 
   async register(req, res, next) {
     try {
-      
-      res.locals.data = {};
+      res.locals.data = await createUser();
       next();
     } catch (err) {
       next(err);
