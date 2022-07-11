@@ -9,16 +9,16 @@ module.exports = (sequelize, Sequelize) => {
   const Catalog = sequelize.define(
     "catalog",
     {
-      catalog_id: {
+      catalogId: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      seller_id: {
+      sellerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      product_ids: {
+      productIds: {
         type: Sequelize.ARRAY(Sequelize.INTEGER),
         allowNull: false,
       },

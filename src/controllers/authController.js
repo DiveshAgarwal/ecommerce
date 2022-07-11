@@ -5,12 +5,15 @@
  * @author Divesh Agarwal
  */
 
-const { createUser } = require("../repositories/userRepo");
+const { createUser, findByEmailId } = require("../repositories/userRepo");
+const { loginUser } = require("../services/userService");
+
 class AuthController {
   async login(req, res, next) {
     try {
-      
-      res.locals.data = {};
+      const data = req.body;
+      const token = await loginUser(data);
+      res.locals.data = token;
       next();
     } catch (err) {
       next(err);
@@ -19,7 +22,10 @@ class AuthController {
 
   async register(req, res, next) {
     try {
-      res.locals.data = await createUser();
+      const data = req.body;
+      const user = await findByEmailId(data.email);
+      if (user) throw new Error("ERR_EMAIL_EXISTS");
+      res.locals.data = await createUser(data);
       next();
     } catch (err) {
       next(err);

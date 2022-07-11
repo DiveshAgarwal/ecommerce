@@ -4,6 +4,9 @@
  * @author Divesh Agarwal
  */
 
+const jwt = require("jsonwebtoken");
+const config = require("../../config");
+
 function makeBatch(array, len) {
   const chunks = [];
   let i = 0;
@@ -16,7 +19,14 @@ function makeBatch(array, len) {
 
 const reducer = (previousValue, currentValue) => previousValue + currentValue;
 
+const generateAccessToken = (data) => {
+  return jwt.sign(data, config.ACCESS_TOKEN_SECRET, {
+    expiresIn: config.ACCESS_TOKEN_EXPIRES_IN,
+  });
+};
+
 module.exports = {
   makeBatch,
   reducer,
+  generateAccessToken,
 };

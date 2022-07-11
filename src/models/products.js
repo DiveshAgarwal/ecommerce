@@ -9,20 +9,20 @@
   const Product = sequelize.define(
     "product",
     {
-      product__id: {
+      productId: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
       },
-      product_name: {
+      productName: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      product_price: {
+      price: {
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
-      added_by: {
+      addedBy: {
         type: Sequelize.INTEGER,
         allowNull: false
       }

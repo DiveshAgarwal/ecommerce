@@ -9,20 +9,20 @@
   const Order = sequelize.define(
     "order",
     {
-      order_id: {
+      orderId: {
         type: Sequelize.STRING,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
-      buyer_id: {
+      buyerId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      seller_id: {
+      sellerId: {
         type: Sequelize.INTEGER,
         unique: true,
       },
-      product_ids: {
+      productIds: {
         type: Sequelize.ARRAY(Sequelize.INTEGER),
         allowNull: false,
       },
