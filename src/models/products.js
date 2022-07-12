@@ -22,9 +22,9 @@
         type: Sequelize.DOUBLE,
         allowNull: false,
       },
-      addedBy: {
+      catalogId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       }
     },
     { timestamps: true }

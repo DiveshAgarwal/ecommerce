@@ -18,10 +18,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      productIds: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
+      catalogName: {
+        type: Sequelize.STRING,
         allowNull: false,
-      },
+      }
     },
     { timestamps: true }
   );
