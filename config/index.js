@@ -5,6 +5,15 @@ module.exports = {
     "/api/auth/login": ["POST"],
     "/api/auth/register": ["POST"],
   },
+  SELLER_URLS: {
+    "/create-catalog": ["POST"],
+    "/orders": ["GET"],
+  },
+  BUYER_URLS: {
+    "/list-of-sellers": ["GET"],
+    "/seller-catalog/:seller_id": ["GET"],
+    "/create-order/:seller_id": ["POST"],
+  },
   SERVER_PORT: process.env.SERVER_PORT,
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_EXPIRES_IN: process.env.ACCESS_TOKEN_EXPIRES_IN,

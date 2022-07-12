@@ -37,6 +37,20 @@ const UserRepo = {
       },
     });
   },
+
+  /**
+   * @param {object} condition to get the user
+   * @description finds user based on the condition
+   * @returns details of the user if found.
+   */
+  async findWhere(condition) {
+    return Models.user.findAll({
+      attributes: ["userId", "name"],
+      where: {
+        ...condition,
+      },
+    });
+  },
 };
 
 module.exports = UserRepo;

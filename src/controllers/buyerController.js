@@ -5,11 +5,12 @@
  * @author Divesh Agarwal
  */
 
- class BuyerController {
+const { findWhere } = require("../repositories/userRepo");
+
+class BuyerController {
   async listSellers(req, res, next) {
     try {
-      
-      res.locals.data = {};
+      res.locals.data = await findWhere({ userType: "seller" });
       next();
     } catch (err) {
       next(err);
@@ -18,7 +19,6 @@
 
   async sellerCatalog(req, res, next) {
     try {
-      
       res.locals.data = {};
       next();
     } catch (err) {
@@ -28,7 +28,6 @@
 
   async createOrder(req, res, next) {
     try {
-      
       res.locals.data = {};
       next();
     } catch (err) {

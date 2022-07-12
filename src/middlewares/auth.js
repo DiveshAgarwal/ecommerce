@@ -15,7 +15,17 @@ const authenticateToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, config.ACCESS_TOKEN_SECRET);
     req.user = decoded;
-    next();
+    const sellerRoute = config.SELLER_URLS[req.route.path];
+    const buyerRoute = config.BUYER_URLS[req.route.path];
+    if (decoded.userType === 'buyer' && buyerRoute && buyerRoute.includes(req.method)) {
+      next();
+    } else if (decoded.userType === 'seller' && sellerRoute && sellerRoute.includes(req.method)) {
+      next();
+    } else {
+      return res
+        .status(401)
+        .send("Invalid Request.");
+    }
   } catch (err) {
     res.status(400).send("Invalid Token");
   }
