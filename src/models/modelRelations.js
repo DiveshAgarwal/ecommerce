@@ -15,6 +15,10 @@ const modelRelations = (sequelize) => {
   order.belongsTo(product, { targetKey: "productId", foreignKey: "productId" })
 
   product.belongsTo(catalog, {foreignKey: "catalogId", targetKey: "catalogId"});
+  catalog.hasMany(product, {foreignKey: "catalogId", targetKey: "catalogId"})
+
+  product.belongsTo(user, {foreignKey: "sellerId", targetKey: "userId"});
+  user.hasMany(product, {foreignKey: "sellerId", targetKey: "userId"})
 };
 
 module.exports = { modelRelations };

@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 const config = require("../../config");
+const { findByUserId } = require("../repositories/userRepo");
 
-const authenticateToken = (req, res, next) => {
+const authenticateToken = async (req, res, next) => {
   const currentRoute = config.PUBLIC_URLS[req.originalUrl];
   if (currentRoute && currentRoute.includes(req.method)) {
     return next();
@@ -15,6 +16,12 @@ const authenticateToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, config.ACCESS_TOKEN_SECRET);
     req.user = decoded;
+    const user = await findByUserId(decoded.userId);
+    if (!user) {
+      return res
+        .status(401)
+        .send("Invalid Request.");
+    }
     const sellerRoute = config.SELLER_URLS[req.route.path];
     const buyerRoute = config.BUYER_URLS[req.route.path];
     if (decoded.userType === 'buyer' && buyerRoute && buyerRoute.includes(req.method)) {

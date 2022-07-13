@@ -9,6 +9,11 @@ const { generateAccessToken } = require("../helpers");
 const { findByEmailId } = require("../repositories/userRepo");
 
 class UserService {
+  /**
+   * @param {object} data login info
+   * @description checks login info of the user and returns authorization token
+   * @returns token
+   */
   async loginUser(data) {
     const user = await findByEmailId(data.email);
     // validating user details
@@ -16,6 +21,7 @@ class UserService {
     if (data.password !== user.password) throw new Error("ERR_PWD_INCORRECT");
     if (data.userType !== user.userType) throw new Error("ERR_UTYPE_INCORRECT");
 
+    // generating access token
     const token = await generateAccessToken({
       userId: user.userId,
       userType: user.userType,

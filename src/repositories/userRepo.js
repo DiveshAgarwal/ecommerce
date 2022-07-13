@@ -9,8 +9,8 @@ const Models = require("../models");
 const UserRepo = {
   /**
    * @param {object} user data of the user
-   * @description creates a new user if not found
-   * @returns user details
+   * @description creates a new user
+   * @returns user
    */
   async createUser(user) {
     return Models.user.create(user);
@@ -19,7 +19,7 @@ const UserRepo = {
   /**
    * @param {number} userId of the user
    * @description finds user by primary key
-   * @returns details of the user if found.
+   * @returns user
    */
   async findByUserId(userId) {
     return Models.user.findByPk(userId);
@@ -28,7 +28,7 @@ const UserRepo = {
   /**
    * @param {string} email email address of the user
    * @description finds user by email address
-   * @returns details of the user if found.
+   * @returns user
    */
   async findByEmailId(email) {
     return Models.user.findOne({
@@ -40,8 +40,8 @@ const UserRepo = {
 
   /**
    * @param {object} condition to get the user
-   * @description finds user based on the condition
-   * @returns details of the user if found.
+   * @description lists users based on the condition
+   * @returns users
    */
   async findWhere(condition) {
     return Models.user.findAll({

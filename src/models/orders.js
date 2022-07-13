@@ -11,6 +11,7 @@
     {
       id: {
         type: Sequelize.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
       },
       orderId: {
@@ -23,7 +24,7 @@
       },
       sellerId: {
         type: Sequelize.INTEGER,
-        unique: true,
+        allowNull: false,
       },
       productId: {
         type: Sequelize.INTEGER,

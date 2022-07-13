@@ -25,6 +25,10 @@
       catalogId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      sellerId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       }
     },
     { timestamps: true }
