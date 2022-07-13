@@ -7,6 +7,8 @@ const errors = {
   ERR_EMAIL_NOT_EXISTS: { message: "Invalid user credentials", status_code: 404 },
   ERR_PWD_INCORRECT: { message: "Invalid user credentials", status_code: 404 },
   ERR_UTYPE_INCORRECT: { message: "Invalid user credentials", status_code: 404 },
+  ERR_CATALOG_EXISTS: { message: "Catalog exists by the user", status_code: 400 },
+  ERR_PRODUCTS_NOT_OWNED: { message: "Product not owned by seller", status_code: 400 },
 };
 
 module.exports = {
