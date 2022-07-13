@@ -36,7 +36,7 @@ To run it in production mode install it locally using npm:
 
 ```
 $ cd ecommerce
-$ npm install --D
+$ npm install --production
 $ npm start 
 ```
 
