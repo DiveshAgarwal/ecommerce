@@ -19,7 +19,7 @@ const authenticateToken = async (req, res, next) => {
     const user = await findByUserId(decoded.userId);
     if (!user) {
       return res
-        .status(401)
+        .status(403)
         .send("Invalid Request.");
     }
     const sellerRoute = config.SELLER_URLS[req.route.path];
@@ -30,7 +30,7 @@ const authenticateToken = async (req, res, next) => {
       next();
     } else {
       return res
-        .status(401)
+        .status(403)
         .send("Invalid Request.");
     }
   } catch (err) {
